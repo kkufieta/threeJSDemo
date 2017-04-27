@@ -16,10 +16,29 @@ camera.position.z = 5;
 var controls = new THREE.TrackballControls(camera, renderer.domElement);
 
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+var material = new THREE.MeshBasicMaterial({
+  color: 0x86bee0
+});
 
+var martian = new THREE.TextureLoader().load("img/martian.jpeg")
+var fallout = new THREE.TextureLoader().load("img/fallout.jpeg")
+var vegetarian = new THREE.TextureLoader().load("img/vegetarian.jpeg")
+
+martian.wrapS = THREE.RepeatWrapping;
+martian.wrapT = THREE.RepeatWrapping;
+martian.repeat.set(1,1);
+
+
+
+
+var cube = new THREE.Mesh(geometry, material);
+// scene.add(cube);
+
+var material2 = new THREE.MeshBasicMaterial({
+  map: martian
+});
+var cube2 = new THREE.Mesh(geometry, material2);
+scene.add(cube2);
 
 
 function render() {
